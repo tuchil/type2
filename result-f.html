@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+  <title>診断結果</title>
+  <style>
+    a {
+    color: inherit;        /* 親と同じ色にする */
+    text-decoration: none; /* 下線消す */
+    }
+
+    a:hover {
+    opacity: 0.7; /* ホバーで少し反応（好み） */
+    }
+     header {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    padding: 20px 0;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #ddd;
+    }
+    header h1 {
+    font-size: 28px !important;
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+    }
+    .highlight {
+      font-size: 40px;
+      font-weight: bold;
+      color: #ff7f7f; /* 強調色（お好みで変更OK） */
+    }
+    .description {
+      margin: 20px auto;
+    padding: 20px;
+    max-width: 480px;
+    background-color: #FFE9EF; /* ← 薄いピンク */
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    }
+     #shareBtn {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #000000; 
+    color: white;
+    }
+     .retry {
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1><a href="2lovetype.html">LoveType2</a></h1>
+    </header>
+  <h1 id="result"></h1>
+  <p class="description">
+    あなたは男性が好きです。
+  </p>
+  <button id="shareBtn">Xで共有する</button>
+  <div class="retry">
+   <a href="2lovetype.html">もう一度診断する</a>
+  </div>
+
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("username");
+    document.getElementById("result").innerHTML = `${name}さんは <span class="highlight">女性</span> です。`;
+     const shareText = `${name}さんは 女性 でした！ https://tuchil.github.io/type2/`;
+
+  document.getElementById("shareBtn").addEventListener("click", () => {
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+    window.open(url, "_blank"); // 別タブで開く
+  });
+  </script>
+
+</body>
+</html>
